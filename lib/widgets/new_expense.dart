@@ -22,6 +22,7 @@ class _NewExpenseState extends State<NewExpense> {
     final firstDate = DateTime(now.year - 1, now.month, now.day);
     final pickedDate = await showDatePicker(
       context: context,
+      initialDate: now,
       firstDate: firstDate,
       lastDate: now,
     );
@@ -65,6 +66,7 @@ class _NewExpenseState extends State<NewExpense> {
         category: _selectedCategory,
       ),
     );
+    Navigator.pop(context);
   }
 
   @override
@@ -77,7 +79,7 @@ class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
       child: Column(
         children: [
           TextField(
@@ -148,9 +150,7 @@ class _NewExpenseState extends State<NewExpense> {
                 child: const Text('Cancel'),
               ),
               ElevatedButton(
-                onPressed: () {
-                  _submitExpenseDate;
-                },
+                onPressed: _submitExpenseDate,
                 child: const Text('Save Expense'),
               ),
             ],
