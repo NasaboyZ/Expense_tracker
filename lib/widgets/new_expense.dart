@@ -40,21 +40,20 @@ class _NewExpenseState extends State<NewExpense> {
         _selectedDate == null) {
       showDialog(
         context: context,
-        builder:
-            (ctx) => AlertDialog(
-              title: const Text('Invalid Inpuut'),
-              content: const Text(
-                'Please make sure a valid title, amount, date and category was entered..',
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(ctx);
-                  },
-                  child: Text('Okay'),
-                ),
-              ],
+        builder: (ctx) => AlertDialog(
+          title: const Text('Invalid Inpuut'),
+          content: const Text(
+            'Please make sure a valid title, amount, date and category was entered..',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: Text('Okay'),
             ),
+          ],
+        ),
       );
       return;
     }
@@ -85,7 +84,7 @@ class _NewExpenseState extends State<NewExpense> {
           TextField(
             controller: _titleController,
             maxLength: 50,
-            decoration: InputDecoration(label: Text('title')),
+            decoration: const InputDecoration(label: Text('title')),
           ),
           Row(
             children: [
@@ -93,7 +92,7 @@ class _NewExpenseState extends State<NewExpense> {
                 child: TextField(
                   controller: _amountController,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     prefixText: '\$ ',
                     label: Text('Amount'),
                   ),
@@ -124,15 +123,14 @@ class _NewExpenseState extends State<NewExpense> {
             children: [
               DropdownButton(
                 value: _selectedCategory,
-                items:
-                    Category.values
-                        .map(
-                          (category) => DropdownMenuItem(
-                            value: category,
-                            child: Text(category.name.toUpperCase()),
-                          ),
-                        )
-                        .toList(),
+                items: Category.values
+                    .map(
+                      (category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(category.name.toUpperCase()),
+                      ),
+                    )
+                    .toList(),
                 onChanged: (value) {
                   if (value == null) {
                     return;

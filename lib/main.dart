@@ -19,9 +19,9 @@ void main() {
                 backgroundColor: kColorSheme.primaryContainer)),
         textTheme: ThemeData().textTheme.copyWith(
             titleLarge: TextStyle(
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.bold,
                 color: kColorSheme.onSecondaryContainer,
-                fontSize: 18))),
+                fontSize: 16))),
     home: const Expenses(),
   ));
 }
